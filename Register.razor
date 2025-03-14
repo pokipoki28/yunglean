@@ -1,0 +1,146 @@
+﻿@*@page "/register"
+@inject Data.DatabaseService DatabaseService
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: white;
+        text-align: center;
+    }
+
+    header {
+        background: white;
+        padding: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .hero {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        background: url('/newcomp/mainphoto.jpg') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .hero h1 {
+            font-size: 72px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+</style>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/info">Info</a></li>
+            <li><a href="/test">Test</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h3>Users</h3>
+<ul>
+    @foreach (var user in users)
+    {
+        <li>@user</li>
+    }
+</ul>
+
+<input @bind="newUser" placeholder="Enter name" />
+<button @onclick="AddUser">Add</button>
+
+@code {
+    private List<string> users = new();
+    private string newUser = "";
+
+    protected override void OnInitialized()
+    {
+        users = DatabaseService.GetUsers();
+    }
+
+    private void AddUser()
+    {
+        // Check that the name is not empty and that it is not in the list of users
+        if (!string.IsNullOrWhiteSpace(newUser) && !users.Contains(newUser))
+        {
+            DatabaseService.AddUser(newUser);
+            users = DatabaseService.GetUsers();
+            newUser = "";
+        }
+    }
+}*@
+@page "/register"
+@using System.ComponentModel.DataAnnotations
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+<h3>Registration</h3>
+
+<EditForm Model="@registerModel" OnValidSubmit="HandleRegister">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Username:</label>
+        <InputText @bind-Value="registerModel.Username" />
+    </div>
+
+    <div>
+        <label>Password:</label>
+        <InputText type="password" @bind-Value="registerModel.Password" />
+    </div>
+
+    <div>
+        <label>Confirm password:</label>
+        <InputText type="password" @bind-Value="registerModel.ConfirmPassword" />
+    </div>
+
+    <button type="submit">Register</button>
+</EditForm>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+
+    private async Task HandleRegister()
+    {
+        if (registerModel.Password != registerModel.ConfirmPassword)
+        {
+            // Обработка ошибки: пароли не совпадают
+            return;
+        }
+
+        var result = await AuthService.Register(registerModel);
+        if (result)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            // Обработка ошибки регистрации
+        }
+    }
+}

@@ -1,0 +1,47 @@
+﻿@page "/gallery"
+@using Microsoft.AspNetCore.Components.Web
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif; /* Стандартный шрифт */
+            background-color: #000;
+            color: white;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Расстояние между картинками */
+            justify-content: center;
+            padding: 20px;
+        }
+
+            .gallery img {
+                width: 200px; /* Ширина картинки */
+                height: 200px; /* Высота картинки */
+                object-fit: cover; /* Обрезка картинки по размеру */
+            }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Gallery</h1>
+        <div class="gallery">
+            <img src="/newcomp/galleryP1.jpg" alt="Photo 1" />
+            <img src="/newcomp/galleryP2.jpg" alt="Photo 2" />
+            <img src="/newcomp/galleryP3.jpg" alt="Photo 3" />
+            <img src="/newcomp/galleryP4.jpg" alt="Photo 4" />
+            <img src="/newcomp/galleryP5.jpg" alt="Photo 5" />
+        </div>
+    </main>
+</body>
+</html>

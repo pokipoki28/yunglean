@@ -1,0 +1,85 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@using WebSiteYungLean.Data
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+<h3>Login</h3>
+
+<div class="login-container">
+    <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div>
+            <label>Username:</label>
+            <InputText @bind-Value="loginModel.Username" />
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <InputText type="password" @bind-Value="loginModel.Password" />
+        </div>
+
+        <button type="submit">Login</button>
+    </EditForm>
+</div>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+
+    private async Task HandleLogin()
+    {
+        var result = await AuthService.Login(loginModel);
+        if (result)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            // Обработка ошибки входа
+        }
+    }
+}
+
+<style scoped>
+    /* Стили только для страницы входа */
+    .login-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: black; /* Белый фон */
+        border: 1px solid #ccc; /* Граница с острыми краями */
+        border-radius: 0; /* Убраны скругленные углы */
+        box-shadow: none; /* Убрана тень */
+    }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Граница с острыми краями */
+            border-radius: 0; /* Убраны скругленные углы */
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: black; /* Черный цвет */
+            color: white; /* Белый текст */
+            border: none;
+            border-radius: 0; /* Убраны скругленные углы */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Плавное изменение цвета */
+        }
+
+            .login-container button:hover {
+                background-color: #333; /* Темно-серый при наведении */
+            }
+</style>

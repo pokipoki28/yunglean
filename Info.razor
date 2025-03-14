@@ -1,0 +1,108 @@
+﻿@page "/info"
+@using Microsoft.AspNetCore.Components.Web
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>info</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto Mono', monospace;
+            background-color: #000;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .info-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: url('/newcomp/videoplayback2.gif') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .info-content {
+            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон для текста */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 1200px; /* Увеличим максимальную ширину */
+            display: flex;
+            gap: 20px; /* Расстояние между текстом и фотографиями */
+        }
+
+        .info-text {
+            flex: 2; /* Текст занимает 2/3 пространства */
+            font-size: 18px;
+            line-height: 1.6;
+            color: white;
+            text-align: left;
+        }
+
+            .info-text p {
+                margin-bottom: 20px;
+            }
+
+        .info-images {
+            flex: 1; /* Фотографии занимают 1/3 пространства */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+            .info-images img {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+            }
+
+        .info-caption {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="info-container">
+            <div class="info-content">
+                <div class="info-text">
+                    <h1>What about Jonatan Leandoer?</h1>
+                    <p>
+                        Yung Lean and the Formation of Sad Boys:
+                        Born Jonatan Leandoer (whitch also was his alter-ego) Håstad on July 18, 1996, in Minsk, Belarus, Yung Lean moved to Stockholm, Sweden, during his childhood. In 2012, he met Yung Sherman and Yung Gud in a local Stockholm park. Bonding over shared musical interests, they formed the collective Hasch Boys, which later evolved into Sad Boys when some members lost interest. Sad Boys began sharing their music on platforms like SoundCloud and Tumblr, quickly amassing a significant following. Their first performance was in Gothenburg, Sweden, on May 5, 2013.
+                    </p>
+                    <p>
+                        Breakthrough with 'Unknown Death 2002':
+                        Yung Lean gained widespread attention with the release of his track "Ginseng Strip 2002," which went viral on YouTube. Later that year, he released his debut mixtape, Unknown Death 2002, and an EP titled Lavender, featuring "Ginseng Strip 2002" among other tracks. Unknown Death 2002 was praised for its unique blend of cloud rap and melancholic tones, drawing comparisons to artists like Lil' B but with a more melodic approach.
+                    </p>
+                    <p>
+                        Sad Boys and Connection to Drain Gang:
+                        Sad Boys and Drain Gang, another Stockholm-based collective including Bladee, Thaiboy Digital, and Ecco2K, share deep connections. Both groups emerged from Stockholm's underground scene in the mid-2010s, often collaborating and influencing each other's work. Bladee, a prominent member of Drain Gang, has reflected on the early days with Sad Boys and Drain Gang, acknowledging the challenges and personal struggles faced during their rise.
+                    </p>
+                    <p>
+                        Continued Influence:
+                        Yung Lean's impact extends beyond music, influencing fashion and internet culture. His distinctive style, including his affinity for bucket hats, has left a mark on street fashion. In November 2024, he attended a New York Knicks game, drawing attention for his unique fashion choices.
+                        His collaborations continue to bridge genres, as seen in his work with artists like Charli XCX and Robyn.
+                    </p>
+                </div>
+                <div class="info-images">
+                    <img src="/newcomp/infoPhoto1.jpg" alt="Info Photo 1" />
+                    <img src="/newcomp/infoPhoto2.jpg" alt="Info Photo 2" />
+                    <p class="info-caption">Actually this background GIF is from first and last Yung Lean concert in Tel Aviv</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

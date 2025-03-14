@@ -1,0 +1,56 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YUNG LEAN</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> <!-- Замените на TD Mars, если он доступен -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto Mono', monospace; /* Замените на 'TD Mars', если шрифт установлен */
+            background-color: #000;
+            color: white;
+            text-align: center;
+            text-transform: uppercase; /* Весь текст капсом */
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            background: url('/newcomp/mainphoto.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .hero h1 {
+                font-size: 72px;
+                color: black; /* Черный текст */
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Тень для лучшей читаемости */
+            }
+
+        .caption {
+            margin-top: 20px; /* Отступ сверху */
+            font-size: 18px; /* Мелкий текст */
+            color: white; /* Белый цвет текста */
+            text-align: center; /* Выравнивание по центру */
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="hero">
+            <h1>YUNG LEAN</h1>
+        </div>
+        <div class="caption">
+            SWEDEN REAPER. ONE OF THE MOST SIGNIFICANT ARTISTS IN THE RAP INDUSTRY IN THE 21ST CENTURY.
+        </div>
+    </main>
+</body>
+</html>
